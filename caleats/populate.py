@@ -20,7 +20,7 @@ def populate_day():
     content = BeautifulSoup(html, 'html5lib').find_all(id = 'content')[2].tbody.find_all(
         'tr', {"valign":"top"})
 
-    LOCATIONS = {0: "Crossroads", 1: "Cafe 3", 2: "Foothill", 3: "Clark Kerr"}
+    LOCATIONS = {0: "Crossroads", 1: "Cafe_3", 2: "Foothill", 3: "Clark_Kerr"}
     #FOODTYPE = {u'#800040': 'Vegan', u'#008000': 'Vegetarian', u'#000000': 'Regular'}
     #more than one vegetarian color o__O
 

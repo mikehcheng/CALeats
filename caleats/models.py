@@ -1,13 +1,11 @@
 from django.db import models
 
+class Account(models.Model):
+	pass
+
 class Entree(models.Model):
 	name = models.CharField(max_length=100)
 	votes = models.IntegerField(default=0)
-
-	def increment_vote(self):
-		self.votes += 1
-	def decrement_vote(self):
-		self.votes -= 1
 
 	def __unicode__(self):
 		return self.name
