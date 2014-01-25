@@ -1,0 +1,15 @@
+<h1>{{ hall }}</h1>
+<ul>
+<p><b>Breakfast</b></p>
+{% for mu in br_menuitems %}
+    <li>{{ mu.entree.name }}</li>
+{% endfor %}
+<p><b>Lunch</b></p>
+{% for mu in lu_menuitems %}
+    <li>{{ mu.entree.name }}</li>
+{% endfor %}
+<p><b>Dinner</b></p>
+{% for mu in di_menuitems %}
+    <li>{{ mu.entree.name }}</li>
+{% endfor %}
+</ul>
