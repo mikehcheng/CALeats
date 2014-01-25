@@ -1,88 +1,16 @@
+{% extends "caleats/base.html" %}
 {% load staticfiles %}
-<!DOCTYPE HTML>
-<html lang="en">
 
-	<head>
-		<title>{{hall}}</title>
-		<meta charset="utf-8">
-		<link href="{% static 'caleats/css/bootstrap.min.css' %}" rel="stylesheet">
-		<link href="{% static 'caleats/css/bootstrap.css' %}" rel="stylesheet">
-		<link href="{% static 'caleats/css/main.css' %}" rel="stylesheet">
-		<script>
-			function startTime(){
-				var today = new Date();
-				var d, h, m = today.getDay(), today.getHours();
-				var hold = "";
-				// for Crossroads
-				if (h >= 7 && h <= 10 && (d >= 1 && d <= 5)){
-					hold = "Breakfast";
-				}
-				else if (h >= 10 && h <= 15 && (d == 0 || d == 6)){
-					hold = "Brunch";
-				}
-				else if (h >= 11 && h <= 14 && (d >= 1 && d <= 5)){
-					hold = "Lunch";
-				}
-				else if (h >= 17 && h <= 21){
-					hold = "Dinner";
-				}
-				else if (h >= 22 || h <= 2 && (!(d == 1 || d == 2))){
-					hold = "Late Night";
-				}
-				else{
-					hold = "Closed";
-				}
-				document.getElementById('meal').innerHTML = hold;
-				t = setTimeout(function(){startTime()}, 500);
-			}
-		</script>
-	</head>
+{% block title %}{{hall}}{% endblock title %}
 
-	<body background="{% static 'caleats/img/cal.jpg' %}" onload="startTime()">
-
-		<div class="navbar-wrapper">
-			<div class="navbar navbar-default" role="navigation" style="opacity:0.90">
-	      		<div class="container">
-	        		<div class="navbar-header">
-	          			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	            			<span class="sr-only">Toggle navigation</span>
-	            			<span class="icon-bar"></span>
-	            			<span class="icon-bar"></span>
-	            			<span class="icon-bar"></span>
-	          			</button>
-	          			<a class="navbar-brand" href="#"><img src="{% static 'caleats/img/home.png' %}" height="25"></a>
-	        		</div>
-	        		<div class="collapse navbar-collapse">
-	          			<ul class="nav navbar-nav">
-	            			<li><a href="cafe_3">Café 3</a></li>
-        					<li><a href="clark_kerr">Clark Kerr</a></li>
-            				<li class="active"><a href="crossroads">Crossroads</a></li>
-            				<li><a href="foothill">Foothill</a></li>
-	          			</ul>
-	          			<ul class="navbar-form navbar-right" role="form">
-	          				<div class="form-group">
-	              				<input type="text" placeholder="Search" class="form-control">
-	            			</div>
-	          			</ul>
-	        		</div><!--/.nav-collapse -->
-	      		</div>
-	    	</div>
-    	</div>
-
-	    <!-- Main component for a primary marketing message or call to action -->
-      	<div class="jumbotron">
-        	<h1>{{hall}}</h1>
-        		<p><div id="meal"></div></p>
-      	</div>
-
-		<!-- Bootstrap core JavaScript
-	    ================================================== -->
-	    <!-- Placed at the end of the document so the pages load faster -->
-
-	    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-	    <script src="../../dist/js/bootstrap.min.js"></script>
-	</body>
-</html>
+{% block middle %}
+	<div class="container">
+	  	<div class="jumbotron" style=style="background: url({% static 'caleats/img/sf.jpg' %});width:1000px; height:600px;">
+	        <h1>{{hall|upper}}</h1>
+	        <h2> dinner | 5:00 pm - 10:00 pm</h2>
+	    </div>
+    </div>
+{% endblock %}
 
 
 
