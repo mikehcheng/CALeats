@@ -5,9 +5,13 @@ class Entree(models.Model):
 	votes = models.IntegerField(default=0)
 
 	def __unicode__(self):
-		return "{0}; Votes: {1}".format(self.name, self.votes)
+		return self.name
 
-class MealOption(models.Model):
+class MenuItem(models.Model):
 	entree = models.ForeignKey(Entree)
+	hall = models.CharField(max_length=20)
 	meal = models.CharField(max_length=20)
-	day = models.DateTimeField()
+	day = models.DateField()
+
+	def __unicode__(self):
+		return "{0} at {1}".format(self.entree.name, self.hall)
