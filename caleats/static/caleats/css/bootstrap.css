@@ -208,13 +208,13 @@ textarea {
   background-image: none;
 }
 a {
-  color: #428bca;
+  color: white;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #2a6496;
-  text-decoration: underline;
+  color: white;
+  text-decoration: none;
 }
 a:focus {
   outline: thin dotted #333;
@@ -4162,7 +4162,8 @@ a.list-group-item.active > .badge,
 .thumbnail {
   padding: 4px;
   line-height: 1.428571429;
-  background-color: #ffffff;
+  color: black;
+  opacity:0.50;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -4180,6 +4181,8 @@ a.list-group-item.active > .badge,
 a.thumbnail:hover,
 a.thumbnail:focus {
   border-color: #428bca;
+  color: white;
+  opacity:1;
 }
 .thumbnail > img {
   margin-left: auto;
