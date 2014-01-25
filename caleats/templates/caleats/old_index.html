@@ -1,0 +1,66 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>UC Berkeley Dining</title>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0, maxium-scale=1.0, user-scalable=no">
+	<link href="{% static 'caleats/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'caleats/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'caleats/css/main.css' %}" rel="stylesheet"/ type="text/css">
+</head>
+<body>
+	<!--Navigation Bar: Home, Calender, Dropdown for selecting meal, search-->
+	<section>
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="navbar-inner">
+				<button type="button" class="navbar-btn btn">Home</button>
+			</div>
+		</nav>
+	</section>
+	<!--Dining Commons Tiles-->
+	
+	<section>
+	    <div class="row">
+            <div class="col-xs-3">
+            	<a href="http://caldining.berkeley.edu/crossroads.html">
+	                <div class="tile" style="background: url({% static 'caleats/img/xr.jpg' %});">
+	                    <div style="background-color:black; width:325px; height:325px; opacity:0.5;"></div>
+	                    <p class="name">crossroads</p>
+	                </div>
+                </a>
+            </div>
+            <div class="col-xs-3">
+            	<a href="http://caldining.berkeley.edu/dc3.html">
+	                <div class="tile" style="background: url({% static 'caleats/img/c3.jpg' %});">
+	                    <div style="background-color:black; width:325px; height:325px; opacity:0.5;"></div>
+	                    <p class="name">café 3</p>
+	                </div>
+                </a>
+            </div>
+            <div class="col-xs-3">
+            	<a href="http://caldining.berkeley.edu/foothill.html">
+	                <div class="tile" style="background: url({% static 'caleats/img/fh.jpg' %});">
+	                    <div style="background-color:black; width:325px; height:325px; opacity:0.5;"></div>
+	                    <p class="name">foothill</p>
+	                </div>
+                </a>
+            </div>
+            <div class="col-xs-3">
+            	<a href="http://caldining.berkeley.edu/ckc.html">
+	                <div class="tile" style="background: url({% static 'caleats/img/ckc.jpg' %});">
+	                    <div style="background-color:black; width:325px; height:325px; opacity:0.5;"></div>
+	                    <p class="name">clark kerr</p>
+	                </div>
+                </a>
+            </div>
+        </div>
+    </section>
+	
+	<!-- <footer>
+		Meal Points for standard and premium goes here
+		<p>Meal Points = 1000</p>
+	</footer> -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+</body>
+</html>

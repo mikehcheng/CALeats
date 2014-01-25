@@ -1,0 +1,18 @@
+.name {
+    font-weight:bold;
+    font-family:arial;
+    font-size:20;
+    color:#fff;
+    bottom:0;
+    left:1em;
+    position:absolute;
+}
+
+.tile {
+    position:absolute;
+    width:325px;
+    height:325px;
+    onClick:DoSomething();
+    onMouseOver:"script";
+    margin-right:1;
+}
