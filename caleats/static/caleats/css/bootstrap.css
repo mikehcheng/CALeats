@@ -4162,8 +4162,8 @@ a.list-group-item.active > .badge,
 .thumbnail {
   padding: 4px;
   line-height: 1.428571429;
-  color: black;
-  opacity:0.50;
+  position: relative;
+  width: 100%;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -4180,9 +4180,7 @@ a.list-group-item.active > .badge,
 }
 a.thumbnail:hover,
 a.thumbnail:focus {
-  border-color: #428bca;
-  color: white;
-  opacity:1;
+  /*border-color: #428bca;*/
 }
 .thumbnail > img {
   margin-left: auto;

@@ -1,32 +1,24 @@
+.fade:hover {
+    opacity: 1;
+    -webkit-filter: grayscale(0%);
+    z-index: -9999999999999999999999999px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.fade {
+    opacity: 1;
+    -webkit-filter: grayscale(100%);
+    transition: opacity .3s ease-in-out;
+    -moz-transition: opacity .3s ease-in-out;
+    -webkit-transition: opacity .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
 .name {
-    font-weight:bold;
-    font-family:arial;
-    font-size:20;
-    color:#fff;
-    bottom:0;
-    left:1em;
-    position:absolute;
-}
-
-.tile {
-    position:absolute;
-    width:325px;
-    height:325px;
-    onClick:DoSomething();
-    onMouseOver:"script";
-    margin-right:1;
-}
-
-.hover-square {
-    background-color: black;
-    width: 500px;
-    height: 500px;
-    opacity:0.5;
-}
-
-.hover-square:hover, .hover-square:focus {
-    background-color: black;
-    width: 500px;
-    height: 500px;
-    opacity:0;
+    text-align: center;
+    color: #fff;
+    font: bold 24px/45px arial;
 }
