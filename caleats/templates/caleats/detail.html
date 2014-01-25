@@ -1,13 +1,19 @@
+{% extends "caleats/base.html" %}
 {% load staticfiles %}
-<html>
+
+{% block title %}{{hall}}{% endblock title %}
 <head>
-	<script type="text/javascript" src="{% static 'caleats/js/jquery.js' %}"></script>
-	<title>{% block title %}A Generic Title{% endblock %}</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 
-<h1>{{ hall }}</h1>
-
-<ul>
+{% block middle %}
+	<div class="container">
+	  	<div class="jumbotron" style=style="background: url({% static 'caleats/img/sf.jpg' %});width:1000px; height:600px;">
+	        <h1>{{hall|upper}}</h1>
+	        <h2> dinner | 5:00 pm - 10:00 pm</h2>
+	    </div>
+    </div>
+    <ul>
 <p><b>Breakfast</b></p>
 {% for mu in br_menuitems %}
     <li>
@@ -30,6 +36,7 @@
     </li>
 {% endfor %}
 </ul>
+{% endblock %}
 
 <script>
   	function vote(kind, id) {
@@ -41,5 +48,3 @@
  	}
 	$(document).ready(addClickHandlers);
 </script>
-
-</html>
