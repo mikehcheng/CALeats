@@ -4,5 +4,6 @@ from caleats import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
-    url(r'^(?P<hall>\S+)/$', views.detail, name='detail')
+    url(r'^vote/$', views.vote),
+    url(r'^(?P<hall>\S+)/$', views.detail, name='detail'),
 )
