@@ -1,153 +1,31 @@
+{% extends "caleats/base.html" %}
 {% load staticfiles %}
-<!DOCTYPE HTML>
-<html lang="en">
 
-	<head>
-		<title>UC Berkeley Dining</title>
-		<meta charset="utf-8">
-		<link href="{% static 'caleats/css/bootstrap.min.css' %}" rel="stylesheet">
-		<link href="{% static 'caleats/css/bootstrap.css' %}" rel="stylesheet">
-		<link href="{% static 'caleats/css/main.css' %}" rel="stylesheet">
-		<link href="{% static 'caleats/css/sticky-footer-navbar.css' %}" rel="stylesheet">
-	</head>
+{% block title %}UC Berkeley Dining{% endblock title %}
 
-<<<<<<< HEAD
-	<body background="{% static 'caleats/img/cal.jpg' %}">
-		<div class="navbar-wrapper">
-			<div class="navbar navbar-default" role="navigation" style="opacity:0.90">
-	      		<div class="container">
-	        		<div class="navbar-header">
-	          			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	            			<span class="sr-only">Toggle navigation</span>
-	            			<span class="icon-bar"></span>
-	            			<span class="icon-bar"></span>
-	            			<span class="icon-bar"></span>
-	          			</button>
-	          			<a class="navbar-brand" href="#">CalEATS</a>
-	        		</div>
-	        		<div class="collapse navbar-collapse">
-	          			<ul class="nav navbar-nav">
-	            			<!--some sort of calendar option -->
-	            			<li class="dropdown">
-	              				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dining Commons <b class="caret"></b></a>
-	              				<ul class="dropdown-menu">
-	            					<li><a href="c3">Café 3</a></li>
-	            					<li><a href="ckc">Clark Kerr</a></li>
-	                				<li><a href="xr">Crossroads</a></li>
-	                				<li><a href="fh">Foothill</a></li>
-	              				</ul>
-	            			</li>
-	          			</ul>
-	          			<ul class="navbar-form navbar-right" role="form">
-	          				<div class="form-group">
-	              				<input type="text" placeholder="Search" class="form-control">
-	            			</div>
-	          			</ul>
-	        		</div><!--/.nav-collapse -->
-	      		</div>
-	    	</div>
-=======
-	<body>
-		<div class="navbar navbar-inverse navbar-default" role="navigation">
-      		<div class="container">
-        		<div class="navbar-header">
-          			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            			<span class="sr-only">Toggle navigation</span>
-            			<span class="icon-bar"></span>
-            			<span class="icon-bar"></span>
-            			<span class="icon-bar"></span>
-          			</button>
-          			<a class="navbar-brand" href="#">CalEATS</a>
-        		</div>
-        		<div class="collapse navbar-collapse">
-          			<ul class="nav navbar-nav">
-            			<!--some sort of calendar option -->
-            			<li class="dropdown">
-              				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dining Commons <b class="caret"></b></a>
-              				<ul class="dropdown-menu">
-            					<li><a href="Cafe_3">Café 3</a></li>
-            					<li><a href="Clark_Kerr">Clark Kerr</a></li>
-                				<li><a href="Crossroads">Crossroads</a></li>
-                				<li><a href="Foothill">Foothill</a></li>
-              				</ul>
-            			</li>
-          			</ul>
-          			<ul class="navbar-form navbar-right" role="form">
-          				<div class="form-group">
-              				<input type="text" placeholder="Search" class="form-control">
-            			</div>
-          			</ul>
-        		</div><!--/.nav-collapse -->
-      		</div>
->>>>>>> 4c78181bc93e84c1821dc83cbaa80f1506741c08
-    	</div>
-
-	    <!-- <a href="http://caldining.berkeley.edu/foothill.html">
-	                <div class="tile" style="background: url({% static 'caleats/img/fh.jpg' %});">
-	                    <div style="background-color:black; width:325px; height:325px; opacity:0.5;"></div>
-	                    <p class="name">foothill</p>
-	                </div>
-                </a> -->
-
-	    <!-- Example row of columns -->
-<<<<<<< HEAD
+{% block middle %}
 	    <div class="container">
 	      	<div class="row">
 	      		<div class="col-md-3">
-    				<a href="xr" class="thumbnail" style="background: url({% static 'caleats/img/c3.jpg' %});width:500px; height:600px;">
-      					<h2 align="center"><strong>CAFÉ 3</strong></h2>
+    				<a href="cafe_3" class="thumbnail fade" style="background: url({% static 'caleats/img/sutro.png' %});width:500px; height:600px;">
+      					<div class="name"><strong>CAFÉ 3</strong></div>
     				</a>
   				</div>
 	        	<div class="col-md-3">
-    				<a href="xr" class="thumbnail" style="background: url({% static 'caleats/img/ckc.jpg' %});width:500px; height:600px;">
-    					<h2 align="center"><strong>CLARK KERR</strong></h2>
+    				<a href="clark_kerr" class="thumbnail fade" style="background: url({% static 'caleats/img/sather.png' %});width:500px; height:600px;">
+    					<div class="name"><strong>CLARK KERR</strong></div>
     				</a>
   				</div>
 	        	<div class="col-md-3">
-    				<a href="xr" class="thumbnail" style="background: url({% static 'caleats/img/xr.jpg' %});width:500px; height:600px;">
-      					<h2 align="center"><strong>CROSSROADS</strong></h2>
+    				<a href="crossroads" class="thumbnail fade" style="background: url({% static 'caleats/img/transamerica.png' %});width:500px; height:600px;">
+      					<div class="name"><strong>CROSSROADS</strong></div>
     				</a>
   				</div>
 	        	<div class="col-md-3">
-    				<a href="xr" class="thumbnail" style="background: url({% static 'caleats/img/fh.jpg' %});width:500px; height:600px;">
-      					<h2 align="center"><strong>FOOTHILL</strong></h2>
+    				<a href="foothill" class="thumbnail fade" style="background: url({% static 'caleats/img/embarcedero.png' %});width:500px; height:600px;">
+      					<div class="name"><strong>FOOTHILL</strong></div>
     				</a>
   				</div>
-=======
-	    <div class="container marketing">
-	      	<div class="row">
-	      		<a href="Cafe_3">
-	        		<div class="col-md-6" style="background: url({% static 'caleats/img/c3.jpg' %}); width:325px; height:325px;">
-	          			<h2>Café 3</h2>
-	        		</div>
-	        	</a>
-	        	<a href="Clark_Kerr">
-	        		<div class="col-md-6" style="background: url({% static 'caleats/img/ckc.jpg' %}); width:325px; height:325px;">
-	          			<h2>Clark Kerr</h2>
-	        		</div>
-	        	</a>
-	      	</div>
-
-	      	<div class="row">
-	        	<a href="Crossroads">
-	        		<div class="col-md-6" style="background: url({% static 'caleats/img/xr.jpg' %}); width:325px; height:325px;">
-	          			<h2>Crossroads</h2>
-	        		</div>
-	        	</a>
-	        	<a href="Foothill">
-	        		<div class="col-md-6" style="background: url({% static 'caleats/img/fh.jpg' %}); width:325px; height:325px;">
-	          			<h2>Foothill</h2>
-	        		</div>
-	        	</a>
->>>>>>> 4c78181bc93e84c1821dc83cbaa80f1506741c08
 	      	</div>
       	</div>
-
-		<!-- Bootstrap core JavaScript
-	    ================================================== -->
-	    <!-- Placed at the end of the document so the pages load faster -->
-
-	    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-	    <script src="../../dist/js/bootstrap.min.js"></script>
-	</body>
-</html>
+{% endblock middle %}

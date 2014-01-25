@@ -3,43 +3,14 @@
 <html lang="en">
 
 	<head>
-		<title>{{hall}}</title>
+		<title>{% block title %}CalEATS{% endblock title %}</title>
 		<meta charset="utf-8">
 		<link href="{% static 'caleats/css/bootstrap.min.css' %}" rel="stylesheet">
 		<link href="{% static 'caleats/css/bootstrap.css' %}" rel="stylesheet">
 		<link href="{% static 'caleats/css/main.css' %}" rel="stylesheet">
-		<script>
-			function startTime(){
-				var today = new Date();
-				var d, h, m = today.getDay(), today.getHours();
-				var hold = "";
-				// for Crossroads
-				if (h >= 7 && h <= 10 && (d >= 1 && d <= 5)){
-					hold = "Breakfast";
-				}
-				else if (h >= 10 && h <= 15 && (d == 0 || d == 6)){
-					hold = "Brunch";
-				}
-				else if (h >= 11 && h <= 14 && (d >= 1 && d <= 5)){
-					hold = "Lunch";
-				}
-				else if (h >= 17 && h <= 21){
-					hold = "Dinner";
-				}
-				else if (h >= 22 || h <= 2 && (!(d == 1 || d == 2))){
-					hold = "Late Night";
-				}
-				else{
-					hold = "Closed";
-				}
-				document.getElementById('meal').innerHTML = hold;
-				t = setTimeout(function(){startTime()}, 500);
-			}
-		</script>
 	</head>
 
-	<body background="{% static 'caleats/img/cal.jpg' %}" onload="startTime()">
-
+	<body background="{% static 'caleats/img/cal.jpg' %}">
 		<div class="navbar-wrapper">
 			<div class="navbar navbar-default" role="navigation" style="opacity:0.90">
 	      		<div class="container">
@@ -56,7 +27,7 @@
 	          			<ul class="nav navbar-nav">
 	            			<li><a href="cafe_3">Café 3</a></li>
         					<li><a href="clark_kerr">Clark Kerr</a></li>
-            				<li class="active"><a href="crossroads">Crossroads</a></li>
+            				<li><a href="crossroads">Crossroads</a></li>
             				<li><a href="foothill">Foothill</a></li>
 	          			</ul>
 	          			<ul class="navbar-form navbar-right" role="form">
@@ -69,10 +40,8 @@
 	    	</div>
     	</div>
 
-	    <!-- Main component for a primary marketing message or call to action -->
-      	<div class="jumbotron">
-        	<h1>{{hall}}</h1>
-        		<p><div id="meal"></div></p>
+	    <div id="middle">
+	    	{% block middle %}{% endblock middle %}
       	</div>
 
 		<!-- Bootstrap core JavaScript
@@ -83,21 +52,3 @@
 	    <script src="../../dist/js/bootstrap.min.js"></script>
 	</body>
 </html>
-
-
-
-<!-- <h1>{{ hall }}</h1>
-<ul>
-<p><b>Breakfast</b></p>
-{% for mu in br_menuitems %}
-    <li>{{ mu.entree.name }}</li>
-{% endfor %}
-<p><b>Lunch</b></p>
-{% for mu in lu_menuitems %}
-    <li>{{ mu.entree.name }}</li>
-{% endfor %}
-<p><b>Dinner</b></p>
-{% for mu in di_menuitems %}
-    <li>{{ mu.entree.name }}</li>
-{% endfor %}
-</ul> -->
