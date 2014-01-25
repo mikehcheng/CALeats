@@ -20,19 +20,21 @@ def populate_day():
     content = BeautifulSoup(html, 'html5lib').find_all(id = 'content')[2].tbody.find_all(
         'tr', {"valign":"top"})
 
-    LOCATIONS = {0: "Crossroads", 1: "Cafe 3", 2: "Foothill", 3: "Clark Kerr"}
+    LOCATIONS = {0: "Crossroads", 1: "Cafe_3", 2: "Foothill", 3: "Clark_Kerr"}
     #FOODTYPE = {u'#800040': 'Vegan', u'#008000': 'Vegetarian', u'#000000': 'Regular'}
     #more than one vegetarian color o__O
 
     for time in content: #b/l/d
         for l, loc in enumerate(time.find_all('td')): #cr/c3/fh/ck
             meal = unicode(loc.find('b').string) #meals bolded
-            if not loc.find('i'):                #closed italicized, no items = closed
-                entrees = loc.find_all('a')      #all meals linked to nutrition
-                for entree in entrees:
-                    name = unicode(entree.string)
-                    #ftype = FOODTYPE[unicode(entree.font['color'])]
-                    dininghall = LOCATIONS[l]
-                    ent = get_entree_if_exists(name)
-                    newitem = MenuItem(entree = ent, hall = dininghall, meal = meal)
-                    newitem.save()
+            #TRASH.PY
+            if meal == u"Lunch/Brunch":
+                meal = u"Lunch"
+            entrees = loc.find_all('a')      #all meals linked to nutrition
+            for entree in entrees:
+                name = unicode(entree.string)
+                #ftype = FOODTYPE[unicode(entree.font['color'])]
+                dininghall = LOCATIONS[l]
+                ent = get_entree_if_exists(name)
+                newitem = MenuItem(entree = ent, hall = dininghall, meal = meal)
+                newitem.save()
