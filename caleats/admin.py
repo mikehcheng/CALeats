@@ -1,3 +1,5 @@
 from django.contrib import admin
+from caleats.models import Entree, MenuItem
 
-# Register your models here.
+admin.site.register(Entree)
+admin.site.register(MenuItem)
