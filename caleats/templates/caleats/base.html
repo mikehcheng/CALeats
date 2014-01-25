@@ -10,7 +10,7 @@
 		<link href="{% static 'caleats/css/main.css' %}" rel="stylesheet">
 	</head>
 
-	<body background="{% static 'caleats/img/cal.jpg' %}">
+	<body>
 		<div class="navbar-wrapper">
 			<div class="navbar navbar-default" role="navigation" style="opacity:0.90">
 	      		<div class="container">
@@ -21,14 +21,14 @@
 	            			<span class="icon-bar"></span>
 	            			<span class="icon-bar"></span>
 	          			</button>
-	          			<a class="navbar-brand" href="#"><img src="{% static 'caleats/img/home.png' %}" height="25"></a>
+	          			<a class="navbar-brand" href="{% url 'caleats.views.index' %}"><img src="{% static 'caleats/img/home.png' %}" height="25"></a>
 	        		</div>
 	        		<div class="collapse navbar-collapse">
 	          			<ul class="nav navbar-nav">
-	            			<li><a href="cafe_3">Café 3</a></li>
-        					<li><a href="clark_kerr">Clark Kerr</a></li>
-            				<li><a href="crossroads">Crossroads</a></li>
-            				<li><a href="foothill">Foothill</a></li>
+	            			<li><a href="{% url 'caleats.views.detail' hall='cafe_3' %}">Café 3</a></li>
+        					<li><a href="{% url 'caleats.views.detail' hall='clark_kerr' %}">Clark Kerr</a></li>
+            				<li><a href="{% url 'caleats.views.detail' hall='crossroads' %}">Crossroads</a></li>
+            				<li><a href="{% url 'caleats.views.detail' hall='foothill' %}">Foothill</a></li>
 	          			</ul>
 	          			<ul class="navbar-form navbar-right" role="form">
 	          				<div class="form-group">

@@ -22,3 +22,7 @@
     color: #fff;
     font: bold 24px/45px arial;
 }
+
+body {
+    background: white url("../img/cal.jpg") no-repeat;
+}

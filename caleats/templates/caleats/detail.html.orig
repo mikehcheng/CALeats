@@ -1,0 +1,98 @@
+<<<<<<< HEAD
+{% load staticfiles %}
+<html>
+<head>
+	<script type="text/javascript" src="{% static 'caleats/js/jquery.js' %}"></script>
+	<title>{% block title %}A Generic Title{% endblock %}</title>
+</head>
+
+<h1>{{ hall }}</h1>
+
+<ul>
+<p><b>Breakfast</b></p>
+{% for mu in br_menuitems %}
+    <li>
+    {{ mu.entree.name }}
+    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
+    </li>
+{% endfor %}
+<p><b>Lunch</b></p>
+{% for mu in lu_menuitems %}
+    <li>
+    {{ mu.entree.name }}
+    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
+    </li>
+{% endfor %}
+<p><b>Dinner</b></p>
+{% for mu in di_menuitems %}
+    <li>
+    {{ mu.entree.name }}
+    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
+    </li>
+{% endfor %}
+</ul>
+
+<script>
+  	function vote(kind, id) {
+	    $.get("/caleats/vote/", { pk: id, vote: kind });
+  	}
+  	function addClickHandlers() {
+	    $(".upvote").click( function() { vote("up", $(this).attr("pk")) });
+	    $(".downvote").click( function() { vote("down", $(this).attr("pk")) });
+ 	}
+	$(document).ready(addClickHandlers);
+</script>
+
+</html>
+=======
+{% extends "caleats/base.html" %}
+{% load staticfiles %}
+
+{% block title %}{{hall}}{% endblock title %}
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+{% block middle %}
+	<div class="container">
+	  	<div class="jumbotron" style=style="background: url({% static 'caleats/img/sf.jpg' %});width:1000px; height:600px;">
+	        <h1>{{hall|upper}}</h1>
+	        <h2> dinner | 5:00 pm - 10:00 pm</h2>
+	    </div>
+    </div>
+    <ul>
+<p><b>Breakfast</b></p>
+{% for mu in br_menuitems %}
+    <li>
+    {{ mu.entree.name }}
+    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
+    </li>
+{% endfor %}
+<p><b>Lunch</b></p>
+{% for mu in lu_menuitems %}
+    <li>
+    {{ mu.entree.name }}
+    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
+    </li>
+{% endfor %}
+<p><b>Dinner</b></p>
+{% for mu in di_menuitems %}
+    <li>
+    {{ mu.entree.name }}
+    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
+
+<script>
+  	function vote(kind, id) {
+	    $.get("/caleats/vote/", { pk: id, vote: kind });
+  	}
+  	function addClickHandlers() {
+	    $(".upvote").click( function() { vote("up", $(this).attr("pk")) });
+	    $(".downvote").click( function() { vote("down", $(this).attr("pk")) });
+ 	}
+	$(document).ready(addClickHandlers);
+</script>
+>>>>>>> 5d147d4cb993362ca12da81b06ef97095ec42d91
