@@ -66,7 +66,10 @@ def favorite(request):
             fk = int(GET[u'fk'])
             ui = UserInfo.objects.get(user=fk)
             entree = MenuItem.objects.get(pk=pk).entree
-            ui.favorites.add(entree)
+            if entree in ui.favorites.all():
+                ui.favorites.remove(entree)
+            else:
+                ui.favorites.add(entree)
             ui.save()
             results = {'success':True}
     json = simplejson.dumps(results)

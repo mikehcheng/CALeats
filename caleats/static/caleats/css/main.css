@@ -52,11 +52,11 @@ body#genericbg {
     color: rgb(66, 139, 202);
 }
 
-.gheart {
+.gh {
     color: gray;
 }
 
-.rheart {
+.rh {
     color: red;
     font-weight:bold;
 }
