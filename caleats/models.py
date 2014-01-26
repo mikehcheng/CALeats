@@ -1,7 +1,5 @@
 from django.db import models
-
-class Account(models.Model):
-	pass
+from django.contrib.auth.models import User
 
 class Entree(models.Model):
 	name = models.CharField(max_length=100)

@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.shortcuts import render
 from django.utils import simplejson
+from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.csrf import csrf_exempt
 
 from caleats.models import Entree, MenuItem
 
@@ -46,3 +48,26 @@ def vote(request):
             results = {'success':True}
     json = simplejson.dumps(results)
     return HttpResponse(json, mimetype='application/json')
+
+@csrf_exempt #TRASH.PY
+def _login(request):
+    results = {'success' : False}
+    user = authenticate(username = request.POST['login_email'], 
+                        password = request.POST['login_password'])
+    if user:
+        login(request, user)
+        results = {'success' : True}
+    json = simplejson.dumps(results)
+    return HttpResponse(json, mimetype='application/json')
+
+# @csrf_exempt #TRASH.PY
+# def _register(request):
+#     results = {'failure' : True}
+#     username = request.POST['login_email']
+
+@csrf_exempt #TRASH.PY
+def _logout(request):
+    logout(request)
+    return HttpResponse(True)
+
+

@@ -5,5 +5,7 @@ from caleats import views
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^vote/$', views.vote),
+    url(r'^login/$', views._login),
+    url(r'^logout/$', views._logout),
     url(r'^(?P<hall>\S+)/$', views.detail, name='detail'),
 )
