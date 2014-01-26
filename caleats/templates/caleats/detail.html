@@ -23,28 +23,46 @@
     $(document).ready(addClickHandlers);
 </script>
 
-<ul>
-<p><b>Breakfast</b></p>
-{% for mu in br_menuitems %}
-    <li>
-    {{ mu.entree.name }}
-    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
-    </li>
-{% endfor %}
-<p><b>Lunch</b></p>
-{% for mu in lu_menuitems %}
-    <li>
-    {{ mu.entree.name }}
-    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
-    </li>
-{% endfor %}
-<p><b>Dinner</b></p>
-{% for mu in di_menuitems %}
-    <li>
-    {{ mu.entree.name }}
-    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
-    </li>
-{% endfor %}
-</ul>
+<div class="container">
+    <div>
+        <ul id="Breakfast" class="nav nav-tabs">
+          <li class="active"><a href="#breakfast" data-toggle="tab">Breakfast</a></li>
+          <li><a href="#lunch" data-toggle="tab">Lunch</a></li>
+          <li><a href="#dinner" data-toggle="tab">Dinner</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade in active" id="breakfast">
+            <ul>
+                {% for mu in br_menuitems %}
+                    <li>
+                    {{ mu.entree.name }}
+                    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
+                    </li>
+                {% endfor %}
+            </ul>
+          </div>
+          <div class="tab-pane fade" id="lunch">
+            <ul>
+                {% for mu in lu_menuitems %}
+                    <li>
+                    {{ mu.entree.name }}
+                    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
+                    </li>
+                {% endfor %}
+            </ul>
+          </div>
+          <div class="tab-pane fade" id="dinner">
+            <ul>
+                {% for mu in di_menuitems %}
+                    <li>
+                    {{ mu.entree.name }}
+                    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
+                    </li>
+                {% endfor %}
+            </ul>
+          </div>        
+        </div>
+    </div>
+</div>
 {% endblock %}
 

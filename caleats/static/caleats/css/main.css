@@ -18,6 +18,11 @@
     transition: all 0.3s ease-in-out;
 }
 
+.picturetile {
+    width:250px;
+    height:500px;
+}
+
 .name {
     text-align: center;
     color: #fff;
@@ -28,6 +33,6 @@
     background-color: rgb(220,220,220);
 }
 
-body {
-    background: white url("../img/cal.jpg") no-repeat;
+body#indexbg {
+    background: white url("../img/cal.jpg") center no-repeat;
 }
