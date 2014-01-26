@@ -15,9 +15,9 @@ def index(request):
 def detail(request, hall):
     hall = hall.lower()
     menuitems = MenuItem.objects.filter(hall = hall)
-    br_menuitems = menuitems.filter(meal = "Breakfast")
-    lu_menuitems = menuitems.filter(meal = "Lunch")
-    di_menuitems = menuitems.filter(meal = "Dinner")
+    br_menuitems = menuitems.filter(meal = "Breakfast").order_by('-entree.votes')
+    lu_menuitems = menuitems.filter(meal = "Lunch").order_by('-entree.votes')
+    di_menuitems = menuitems.filter(meal = "Dinner").order_by('-entree.votes')
     hallname_dict = {
         "cafe_3": u"Café 3",
         "clark_kerr": "Clark Kerr",
