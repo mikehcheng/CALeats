@@ -15,3 +15,7 @@ class MenuItem(models.Model):
 
 	def __unicode__(self):
 		return "{0} at {1}".format(self.entree.name, self.hall)
+
+class UserInfo(models.Model):
+	user = models.ForeignKey(User, unique=True)
+	favorites = models.ManyToManyField(Entree)

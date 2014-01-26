@@ -52,6 +52,10 @@ body#genericbg {
     color: rgb(66, 139, 202);
 }
 
+<<<<<<< HEAD
+#loginTypeTab > li > a {
+    color: black;
+=======
 .gh {
     color: gray;
 }
@@ -59,8 +63,5 @@ body#genericbg {
 .rh {
     color: red;
     font-weight:bold;
-}
-
-#loginTypeTab > li > a {
-    color: black;
+>>>>>>> bbe7c19be6c422408761c6f676379cf045c884c8
 }
