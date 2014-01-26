@@ -8,6 +8,7 @@
     -ms-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
+
 .fade {
     opacity: 1;
     -webkit-filter: grayscale(100%);
@@ -21,6 +22,10 @@
     text-align: center;
     color: #fff;
     font: bold 24px/45px arial;
+}
+
+#hallheader {
+    background-color: rgb(220,220,220);
 }
 
 body {

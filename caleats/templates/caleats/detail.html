@@ -1,19 +1,29 @@
 {% extends "caleats/base.html" %}
 {% load staticfiles %}
 
-{% block title %}{{hall}}{% endblock title %}
-<head>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-</head>
+{% block title %}{{ hall }}{% endblock title %}
 
 {% block middle %}
-	<div class="container">
-	  	<div class="jumbotron" style=style="background: url({% static 'caleats/img/sf.jpg' %});width:1000px; height:600px;">
-	        <h1>{{hall|upper}}</h1>
-	        <h2> dinner | 5:00 pm - 10:00 pm</h2>
-	    </div>
+<div class="container">
+  	<div class="jumbotron" id="hallheader">
+        <h1>{{ hall }}</h1>
+        <h2> dinner | 5:00 pm - 10:00 pm</h2>
     </div>
-    <ul>
+</div>
+
+<script type="text/javascript" src="{% static 'caleats/js/jquery.js' %}"></script>
+<script>
+    function vote(kind, id) {
+        $.get("/caleats/vote/", { pk: id, vote: kind });
+    }
+    function addClickHandlers() {
+        $(".upvote").click( function() { vote("up", $(this).attr("pk")) });
+        $(".downvote").click( function() { vote("down", $(this).attr("pk")) });
+    }
+    $(document).ready(addClickHandlers);
+</script>
+
+<ul>
 <p><b>Breakfast</b></p>
 {% for mu in br_menuitems %}
     <li>
@@ -38,13 +48,3 @@
 </ul>
 {% endblock %}
 
-<script>
-  	function vote(kind, id) {
-	    $.get("/caleats/vote/", { pk: id, vote: kind });
-  	}
-  	function addClickHandlers() {
-	    $(".upvote").click( function() { vote("up", $(this).attr("pk")) });
-	    $(".downvote").click( function() { vote("down", $(this).attr("pk")) });
- 	}
-	$(document).ready(addClickHandlers);
-</script>
