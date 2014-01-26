@@ -36,3 +36,17 @@
 body#indexbg {
     background: white url("../img/cal.jpg") center no-repeat;
 }
+
+body#genericbg {
+    background: rgb(245,245,245); 
+}
+
+#mealdisplay {
+    width: 70%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#MealChoice > li > a {
+    color: rgb(66, 139, 202);
+}

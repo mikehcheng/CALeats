@@ -24,42 +24,60 @@
 </script>
 
 <div class="container">
-    <div>
-        <ul id="Breakfast" class="nav nav-tabs">
+    <div id="mealdisplay">
+        <ul id="MealChoice" class="nav nav-tabs">
           <li class="active"><a href="#breakfast" data-toggle="tab">Breakfast</a></li>
           <li><a href="#lunch" data-toggle="tab">Lunch</a></li>
           <li><a href="#dinner" data-toggle="tab">Dinner</a></li>
         </ul>
-        <div id="myTabContent" class="tab-content">
+        <div id="Menu" class="tab-content">
           <div class="tab-pane fade in active" id="breakfast">
-            <ul>
+            <table class="table table-striped">
                 {% for mu in br_menuitems %}
-                    <li>
-                    {{ mu.entree.name }}
-                    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
-                    </li>
+                <tr>
+                    <td>{{ mu.entree.votes }}</td>
+                    <td>{{ mu.entree.name }}</td>
+                    <td><span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span></td>
+                    <td><span class="heart" pk="{{ mu.pk }}">&lt3</span>
+                </tr>
+                {% empty %}
+                    <tr>
+                        <td><em>Closed</em></td>
+                    </tr>
                 {% endfor %}
-            </ul>
+            </table>
           </div>
           <div class="tab-pane fade" id="lunch">
-            <ul>
+            <table class="table table-striped">
                 {% for mu in lu_menuitems %}
-                    <li>
-                    {{ mu.entree.name }}
-                    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
-                    </li>
+                <tr>
+                    <td>{{ mu.entree.votes }}</td>
+                    <td>{{ mu.entree.name }}</td>
+                    <td><span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span></td>
+                    <td><span class="heart" pk="{{ mu.pk }}">&lt3</span>
+                </tr>
+                {% empty %}
+                    <tr>
+                        <td><em>Closed</em></td>
+                    </tr>
                 {% endfor %}
-            </ul>
+            </table>
           </div>
           <div class="tab-pane fade" id="dinner">
-            <ul>
+            <table class="table table-striped">
                 {% for mu in di_menuitems %}
-                    <li>
-                    {{ mu.entree.name }}
-                    <span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span>
-                    </li>
+                <tr>
+                    <td>{{ mu.entree.votes }}</td>
+                    <td>{{ mu.entree.name }}</td>
+                    <td><span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span></td>
+                    <td><span class="heart" pk="{{ mu.pk }}">&lt3</span>
+                </tr>
+                {% empty %}
+                    <tr>
+                        <td><em>Closed</em></td>
+                    </tr>
                 {% endfor %}
-            </ul>
+            </table>
           </div>        
         </div>
     </div>
