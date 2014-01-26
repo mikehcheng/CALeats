@@ -2,27 +2,28 @@
 {% load staticfiles %}
 
 {% block title %}UC Berkeley Dining{% endblock title %}
+{% block bodyid %}"indexbg"{% endblock bodyid %}
 
 {% block middle %}
 	    <div class="container">
 	      	<div class="row">
 	      		<div class="col-md-3">
-    				<a href="cafe_3" class="thumbnail fade" style="background: url({% static 'caleats/img/sutro.png' %});width:500px; height:600px;">
+    				<a href="cafe_3" class="thumbnail fade picturetile" style="background: url({% static 'caleats/img/sutro.png' %})">
       					<div class="name"><strong>CAFÉ 3</strong></div>
     				</a>
   				</div>
 	        	<div class="col-md-3">
-    				<a href="clark_kerr" class="thumbnail fade" style="background: url({% static 'caleats/img/sather.png' %});width:500px; height:600px;">
+    				<a href="clark_kerr" class="thumbnail fade picturetile" style="background: url({% static 'caleats/img/sather.png' %})">
     					<div class="name"><strong>CLARK KERR</strong></div>
     				</a>
   				</div>
 	        	<div class="col-md-3">
-    				<a href="crossroads" class="thumbnail fade" style="background: url({% static 'caleats/img/transamerica.png' %});width:500px; height:600px;">
+    				<a href="crossroads" class="thumbnail fade picturetile" style="background: url({% static 'caleats/img/transamerica.png' %})">
       					<div class="name"><strong>CROSSROADS</strong></div>
     				</a>
   				</div>
 	        	<div class="col-md-3">
-    				<a href="foothill" class="thumbnail fade" style="background: url({% static 'caleats/img/embarcedero.png' %});width:500px; height:600px;">
+    				<a href="foothill" class="thumbnail fade picturetile" style="background: url({% static 'caleats/img/embarcedero.png' %})">
       					<div class="name"><strong>FOOTHILL</strong></div>
     				</a>
   				</div>
