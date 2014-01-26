@@ -16,9 +16,15 @@
     function vote(kind, id) {
         $.get("/caleats/vote/", { pk: id, vote: kind });
     }
+    function favorite(id) {
+        {% if user %}
+        $.get("/caleats/favorite/", { pk: id, fk: {{ user.id }} });
+        {% endif %}
+    }
     function addClickHandlers() {
         $(".upvote").click( function() { vote("up", $(this).attr("pk")) });
         $(".downvote").click( function() { vote("down", $(this).attr("pk")) });
+        $(".gheart").click( function() { favorite($(this).attr("pk")) });
     }
     $(document).ready(addClickHandlers);
 </script>
@@ -38,7 +44,7 @@
                     <td>{{ mu.entree.votes }}</td>
                     <td>{{ mu.entree.name }}</td>
                     <td><span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span></td>
-                    <td><span class="heart" pk="{{ mu.pk }}">&lt3</span>
+                    <td><span class={% if mu.entree in favorites %}"rheart"{%  else %}"gheart"{% endif %} pk="{{ mu.pk }}">&lt3</span>
                 </tr>
                 {% empty %}
                     <tr>
@@ -54,7 +60,7 @@
                     <td>{{ mu.entree.votes }}</td>
                     <td>{{ mu.entree.name }}</td>
                     <td><span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span></td>
-                    <td><span class="heart" pk="{{ mu.pk }}">&lt3</span>
+                    <td><span class={% if mu.entree in favorites %}"rheart"{%  else %}"gheart"{% endif %} pk="{{ mu.pk }}">&lt3</span></td>
                 </tr>
                 {% empty %}
                     <tr>
@@ -70,7 +76,7 @@
                     <td>{{ mu.entree.votes }}</td>
                     <td>{{ mu.entree.name }}</td>
                     <td><span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span></td>
-                    <td><span class="heart" pk="{{ mu.pk }}">&lt3</span>
+                    <td><span class={% if mu.entree in favorites %}"rheart"{%  else %}"gheart"{% endif %} pk="{{ mu.pk }}">&lt3</span>
                 </tr>
                 {% empty %}
                     <tr>

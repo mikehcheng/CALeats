@@ -31,6 +31,7 @@
 
 #hallheader {
     background-color: rgb(220,220,220);
+    background: white url("../img/cal.jpg") center no-repeat;
 }
 
 body#indexbg {
@@ -49,4 +50,13 @@ body#genericbg {
 
 #MealChoice > li > a {
     color: rgb(66, 139, 202);
+}
+
+.gheart {
+    color: gray;
+}
+
+.rheart {
+    color: red;
+    font-weight:bold;
 }
