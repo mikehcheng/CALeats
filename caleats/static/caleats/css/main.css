@@ -19,8 +19,9 @@
 }
 
 .picturetile {
-    width:250px;
+    width:auto;
     height:500px;
+    margin-bottom:20px;
 }
 
 .name {
@@ -35,7 +36,7 @@
 }
 
 body#indexbg {
-    background: white url("../img/cal.jpg") center no-repeat;
+    background: white url("../img/cal.jpg") center top no-repeat;
 }
 
 body#genericbg {
