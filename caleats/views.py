@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
-
+import time
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.shortcuts import render
 from django.utils import simplejson
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
 
-from caleats.models import Entree, MenuItem
+from caleats.models import Entree, MenuItem#, UserInfo
 
 def index(request):
     return render(request, 'caleats/index.html')
@@ -60,10 +62,25 @@ def _login(request):
     json = simplejson.dumps(results)
     return HttpResponse(json, mimetype='application/json')
 
-# @csrf_exempt #TRASH.PY
-# def _register(request):
-#     results = {'failure' : True}
-#     username = request.POST['login_email']
+@csrf_exempt #TRASH.PY
+def _register(request):
+    results = {'failure' : "Could not get email."}
+    username = request.POST['login_email2']
+    password = request.POST['login_password2']
+    confirm_pass = request.POST['confirm_password2']
+    if User.objects.filter(username = username):
+        results = {'failure': "Email already in use."}
+    elif str(password) != str(confirm_pass):
+        results = {'failure': "Passwords don't match."}
+    else:
+        print('here')
+        user = User(username = username, password = make_password(password))
+        user.save()
+        user = authenticate(username = username, password = password)
+        login(request, user)
+        results = {'failure': False}
+    json = simplejson.dumps(results)
+    return HttpResponse(json, mimetype='application/json')
 
 @csrf_exempt #TRASH.PY
 def _logout(request):

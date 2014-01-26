@@ -7,5 +7,6 @@ urlpatterns = patterns('',
     url(r'^vote/$', views.vote),
     url(r'^login/$', views._login),
     url(r'^logout/$', views._logout),
+    url(r'^register/$', views._register),
     url(r'^(?P<hall>\S+)/$', views.detail, name='detail'),
 )

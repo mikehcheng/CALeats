@@ -50,3 +50,7 @@ body#genericbg {
 #MealChoice > li > a {
     color: rgb(66, 139, 202);
 }
+
+#loginTypeTab > li > a {
+    color: black;
+}
