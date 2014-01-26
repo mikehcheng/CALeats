@@ -5038,14 +5038,14 @@ button.close {
 body.modal-open,
 .modal-open .navbar-fixed-top,
 .modal-open .navbar-fixed-bottom {
-  margin-right: 15px;
+  margin-right: 0px;
 }
 .modal {
   display: none;
   overflow: auto;
   overflow-y: scroll;
   position: fixed;
-  top: 0;
+  top: 14%;
   right: 0;
   bottom: 0;
   left: 0;
