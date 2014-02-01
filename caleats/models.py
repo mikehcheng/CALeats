@@ -18,6 +18,6 @@ class MenuItem(models.Model):
 
 class UserInfo(models.Model):
 	user = models.ForeignKey(User, unique=True)
-	favorites = models.ManyToManyField(Entree)
-	upvotes = models.ManyToManyField(Entree)
-	downvotes = models.ManyToManyField(Entree)
+	favorites = models.ManyToManyField(Entree, related_name='favorites')
+	upvotes = models.ManyToManyField(Entree, related_name='upvotes')
+	downvotes = models.ManyToManyField(Entree, related_name='downvotes')
