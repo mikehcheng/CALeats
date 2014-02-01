@@ -16,15 +16,25 @@
     function vote(kind, id) {
         $.get("/caleats/vote/", { pk: id, vote: kind });
     }
-    function favorite(id) {
+    function favorite(id, elem) {
         {% if user %}
-        $.get("/caleats/favorite/", { pk: id, fk: {{ user.id }} });
+        $.get("/caleats/favorite/", { pk: id });
+        if (elem.className=="rh heart")
+        {
+            elem.className="gh heart"
+        }
+        else
+        {
+            elem.className="rh heart"
+        }
         {% endif %}
     }
     function addClickHandlers() {
         $(".upvote").click( function() { vote("up", $(this).attr("pk")) });
         $(".downvote").click( function() { vote("down", $(this).attr("pk")) });
-        $(".heart").click( function() { favorite($(this).attr("pk")) });
+        $(".heart").click( function() { favorite($(this).attr("pk"), this);
+                                        
+                                      });
     }
     $(document).ready(addClickHandlers);
 </script>

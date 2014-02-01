@@ -26,7 +26,6 @@ def detail(request, hall):
         user = False
     else:
         favorites = UserInfo.objects.get(user=user).favorites.all()
-        print(favorites)
     hallname_dict = {
         "cafe_3": u"Café 3",
         "clark_kerr": "Clark Kerr",
@@ -63,10 +62,9 @@ def vote(request):
 def favorite(request):
     if request.method == u'GET':
         GET = request.GET
-        if GET.has_key(u'pk') and GET.has_key(u'fk'):
+        if GET.has_key(u'pk'):
             pk = int(GET[u'pk'])
-            fk = int(GET[u'fk'])
-            ui = UserInfo.objects.get(user=fk)
+            ui = UserInfo.objects.get(user=request.user)
             entree = MenuItem.objects.get(pk=pk).entree
             if entree in ui.favorites.all():
                 ui.favorites.remove(entree)
@@ -99,7 +97,6 @@ def _register(request):
     elif str(password) != str(confirm_pass):
         results = {'failure': "Passwords don't match."}
     else:
-        print('here')
         user = User(username = username, password = make_password(password))
         user.save()
         info = UserInfo(user = user)

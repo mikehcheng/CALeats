@@ -55,11 +55,16 @@ body#genericbg {
 
 .gh {
     color: gray;
+    font-weight:bold;
 }
 
 .rh {
     color: red;
     font-weight:bold;
+}
+
+.test {
+    text-decoration:underline;
 }
 
 #loginTypeTab > li > a {
