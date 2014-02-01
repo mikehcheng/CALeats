@@ -14,7 +14,20 @@
 <script type="text/javascript" src="{% static 'caleats/js/jquery.js' %}"></script>
 <script>
     function vote(kind, id) {
-        $.get("/caleats/vote/", { pk: id, vote: kind });
+        $.getJSON("/caleats/vote/", { pk: id, vote: kind }, function(json){
+            if (json['success'])
+            {
+                var votes = document.getElementById(id+"votes");
+                if (kind=="up")
+                {
+                    votes.innerHTML=parseInt(votes.innerHTML)+1
+                }
+                else
+                {
+                    votes.innerHTML=parseInt(votes.innerHTML)-1
+                }
+            }
+        });
     }
     function favorite(id, elem) {
         {% if user %}
@@ -67,10 +80,13 @@
             <table class="table table-striped">
                 {% for mu in lu_menuitems %}
                 <tr>
-                    <td>{{ mu.entree.votes }}</td>
+                    <td id="{{ mu.pk }}votes">{{ mu.entree.votes }}</td>
                     <td>{{ mu.entree.name }}</td>
-                    <td><span class="upvote" pk="{{ mu.pk }}">+</span> / <span class="downvote"  pk="{{ mu.pk }}">-</span></td>
-                    <td><span class={% if mu.entree in favorites %}"rh heart"{%  else %}"gh heart"{% endif %} pk="{{ mu.pk }}">&lt3</span></td>
+                    <td>
+                        <span class="upvote{% if mu.entree in upvotes %} vselected{% endif %}" pk="{{ mu.pk }}">+</span> / 
+                        <span class="downvote{% if mu.entree in downvotes %} vselected{% endif %}"  pk="{{ mu.pk }}">-</span>
+                    </td>
+                    <td><span class="{% if mu.entree in favorites %}rh{%  else %}gh{% endif %} heart" pk="{{ mu.pk }}">&lt3</span></td>
                 </tr>
                 {% empty %}
                     <tr>

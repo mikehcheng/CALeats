@@ -22,10 +22,14 @@ def detail(request, hall):
     di_menuitems = menuitems.filter(meal = "Dinner").order_by('-entree__votes')
     user = request.user
     favorites = None
+    upvotes = None
+    downvotes = None
     if not user.is_authenticated():
         user = False
     else:
         favorites = UserInfo.objects.get(user=user).favorites.all()
+        upvotes = UserInfo.objects.get(user=user).upvotes.all()
+        downvotes = UserInfo.objects.get(user=user).downvotes.all()
     hallname_dict = {
         "cafe_3": u"Café 3",
         "clark_kerr": "Clark Kerr",
@@ -38,7 +42,9 @@ def detail(request, hall):
     	'lu_menuitems': lu_menuitems,
     	'di_menuitems': di_menuitems,
         'user': user,
-        'favorites': favorites
+        'favorites': favorites,
+        'upvotes': upvotes,
+        'downvotes': downvotes
     	}
     return render(request, 'caleats/detail.html', context)
 
@@ -50,12 +56,23 @@ def vote(request):
             pk = int(GET[u'pk'])
             vote = GET[u'vote']
             entree = MenuItem.objects.get(pk=pk).entree
-            if vote == u"up":
+            ui = UserInfo.objects.get(user=request.user)
+            success = False
+            if vote == u"up" and entree not in ui.upvotes.all():
                 entree.votes += 1
-            elif vote == u"down":
+                ui.upvotes.add(entree)
+                if entree in ui.downvotes.all():
+                    ui.downvotes.remove(entree)
+                success = True
+            elif vote == u"down" and entree not in ui.downvotes.all():
                 entree.votes -= 1
+                ui.downvotes.add(entree)
+                if entree in ui.upvotes.all():
+                    ui.upvotes.remove(entree)
+                success = True
             entree.save()
-            results = {'success':True}
+            ui.save()
+            results = {'success':success}
     json = simplejson.dumps(results)
     return HttpResponse(json, mimetype='application/json')
 

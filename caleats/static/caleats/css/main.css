@@ -63,10 +63,18 @@ body#genericbg {
     font-weight:bold;
 }
 
-.test {
-    text-decoration:underline;
-}
-
 #loginTypeTab > li > a {
     color: black;
+}
+
+.vselected {
+    font-weight: bold;
+}
+
+.upvote.vselected {
+    color: green;
+}
+
+.downvote.vselected {
+    color: red;
 }
