@@ -18,13 +18,29 @@
             if (json['success'])
             {
                 var votes = document.getElementById(id+"votes");
+                var uvote = document.getElementById(id+"uvote");
+                var dvote = document.getElementById(id+"dvote");
                 if (kind=="up")
                 {
-                    votes.innerHTML=parseInt(votes.innerHTML)+1
+                    newvotes=parseInt(votes.innerHTML)+1
+                    if(json['prevvoted'])
+                    {
+                        newvotes+=1
+                    }
+                    votes.innerHTML=newvotes
+                    uvote.className="upvote vselected"
+                    dvote.className="downvote"
                 }
                 else
                 {
-                    votes.innerHTML=parseInt(votes.innerHTML)-1
+                    newvotes=parseInt(votes.innerHTML)-1
+                    if(json['prevvoted'])
+                    {
+                        newvotes-=1
+                    }
+                    votes.innerHTML=newvotes
+                    uvote.className="upvote"
+                    dvote.className="downvote vselected"
                 }
             }
         });
@@ -83,8 +99,8 @@
                     <td id="{{ mu.pk }}votes">{{ mu.entree.votes }}</td>
                     <td>{{ mu.entree.name }}</td>
                     <td>
-                        <span class="upvote{% if mu.entree in upvotes %} vselected{% endif %}" pk="{{ mu.pk }}">+</span> / 
-                        <span class="downvote{% if mu.entree in downvotes %} vselected{% endif %}"  pk="{{ mu.pk }}">-</span>
+                        <span id="{{ mu.pk }}uvote" class="upvote{% if mu.entree in upvotes %} vselected{% endif %}" pk="{{ mu.pk }}">+</span> / 
+                        <span id="{{ mu.pk }}dvote" class="downvote{% if mu.entree in downvotes %} vselected{% endif %}"  pk="{{ mu.pk }}">-</span>
                     </td>
                     <td><span class="{% if mu.entree in favorites %}rh{%  else %}gh{% endif %} heart" pk="{{ mu.pk }}">&lt3</span></td>
                 </tr>

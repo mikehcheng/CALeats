@@ -49,7 +49,7 @@ def detail(request, hall):
     return render(request, 'caleats/detail.html', context)
 
 def vote(request):
-    results = {'success':False}
+    results = {'success':False, 'prevvoted':False}
     if request.method == u'GET':
         GET = request.GET
         if GET.has_key(u'pk') and GET.has_key(u'vote'):
@@ -58,21 +58,24 @@ def vote(request):
             entree = MenuItem.objects.get(pk=pk).entree
             ui = UserInfo.objects.get(user=request.user)
             success = False
+            prevvoted = False
             if vote == u"up" and entree not in ui.upvotes.all():
                 entree.votes += 1
                 ui.upvotes.add(entree)
                 if entree in ui.downvotes.all():
+                    prevvoted = True
                     ui.downvotes.remove(entree)
                 success = True
             elif vote == u"down" and entree not in ui.downvotes.all():
                 entree.votes -= 1
                 ui.downvotes.add(entree)
                 if entree in ui.upvotes.all():
+                    prevvoted = True
                     ui.upvotes.remove(entree)
                 success = True
             entree.save()
             ui.save()
-            results = {'success':success}
+            results = {'success':success, 'prevvoted':prevvoted}
     json = simplejson.dumps(results)
     return HttpResponse(json, mimetype='application/json')
 
