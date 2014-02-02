@@ -63,6 +63,7 @@ def vote(request):
                 entree.votes += 1
                 ui.upvotes.add(entree)
                 if entree in ui.downvotes.all():
+                    entree.votes += 1
                     prevvoted = True
                     ui.downvotes.remove(entree)
                 success = True
@@ -71,6 +72,7 @@ def vote(request):
                 ui.downvotes.add(entree)
                 if entree in ui.upvotes.all():
                     prevvoted = True
+                    entree.votes -= 1
                     ui.upvotes.remove(entree)
                 success = True
             entree.save()
@@ -80,6 +82,7 @@ def vote(request):
     return HttpResponse(json, mimetype='application/json')
 
 def favorite(request):
+    results = {'wasfav':False}
     if request.method == u'GET':
         GET = request.GET
         if GET.has_key(u'pk'):
@@ -87,11 +90,11 @@ def favorite(request):
             ui = UserInfo.objects.get(user=request.user)
             entree = MenuItem.objects.get(pk=pk).entree
             if entree in ui.favorites.all():
+                results = {'wasfav':True}
                 ui.favorites.remove(entree)
             else:
                 ui.favorites.add(entree)
             ui.save()
-            results = {'success':True}
     json = simplejson.dumps(results)
     return HttpResponse(json, mimetype='application/json')
 
